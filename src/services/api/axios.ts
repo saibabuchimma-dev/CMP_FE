@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosRequestConfig } from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
@@ -39,18 +39,18 @@ axiosInstance.interceptors.response.use(
 );
 
 export const apiClient = {
-  get: <T>(url: string, params?: Record<string, unknown>) => 
-    axiosInstance.get<T>(url, { params }).then(res => res.data),
+  get: <T>(url: string, params?: Record<string, unknown>, config?: AxiosRequestConfig) => 
+    axiosInstance.get<T>(url, { params, ...config }).then(res => res.data),
   
-  post: <T>(url: string, data?: unknown) => 
-    axiosInstance.post<T>(url, data).then(res => res.data),
+  post: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
+    axiosInstance.post<T>(url, data, config).then(res => res.data),
   
-  patch: <T>(url: string, data?: unknown) => 
-    axiosInstance.patch<T>(url, data).then(res => res.data),
+  patch: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
+    axiosInstance.patch<T>(url, data, config).then(res => res.data),
   
-  put: <T>(url: string, data?: unknown) => 
-    axiosInstance.put<T>(url, data).then(res => res.data),
+  put: <T>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
+    axiosInstance.put<T>(url, data, config).then(res => res.data),
   
-  delete: <T>(url: string) => 
-    axiosInstance.delete<T>(url).then(res => res.data),
+  delete: <T>(url: string, config?: AxiosRequestConfig) => 
+    axiosInstance.delete<T>(url, config).then(res => res.data),
 };

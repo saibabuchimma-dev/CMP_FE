@@ -35,7 +35,7 @@ export default function ProjectWorkspaceLayout({
   const allProjects = projects ?? [];
 
   useEffect(() => {
-    if (effectiveProject && !selectedProject) {
+    if (effectiveProject && (!selectedProject || selectedProject.id !== effectiveProject.id)) {
       setSelectedProject(effectiveProject);
     }
   }, [effectiveProject, selectedProject, setSelectedProject]);

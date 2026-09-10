@@ -54,30 +54,19 @@ export function DashboardLayout({
         onGoHub={onGoHub}
       />
 
-      <div className="flex">
-        <Sidebar
-          active={activeModule ?? ''}
-          onSelect={onModuleSelect ?? (() => {})}
-          className={cn(sidebarOpen ? 'block' : 'hidden md:block')}
-        />
+      <div className="flex flex-1">
+        {project && (
+          <Sidebar
+            active={activeModule ?? ''}
+            onSelect={onModuleSelect ?? (() => {})}
+            className={cn(sidebarOpen ? 'block' : 'hidden md:flex')}
+          />
+        )}
 
-        <main className="flex-1 min-w-0 lg:ml-0" style={{ marginLeft: sidebarOpen ? '14rem' : 0 }}>
-          {project && !activeModule && (
-            <div className="border-b bg-surface px-4 py-2 md:hidden" style={{ borderColor: 'var(--color-border)' }}>
-              <button
-                onClick={onGoHub}
-                className="flex items-center gap-1.5 text-body-sm text-text-secondary hover:text-text transition-colors"
-              >
-                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M19 12H5" />
-                  <path d="M12 19l-7-7 7-7" />
-                </svg>
-                All projects
-              </button>
-            </div>
+        <main className="flex-1 min-w-0">
+          {project && (
+            <MobileTabs active={activeModule ?? ''} onSelect={onModuleSelect ?? (() => {})} />
           )}
-
-          <MobileTabs active={activeModule ?? ''} onSelect={onModuleSelect ?? (() => {})} />
 
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {children}

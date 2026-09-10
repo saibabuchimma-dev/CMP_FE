@@ -31,6 +31,7 @@ export const photosService = {
       return {
         id: `PHOTO-${Date.now()}`,
         ...input,
+        tags: input.tags ?? [],
         createdAt: new Date().toISOString(),
       };
     }

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Providers } from '@/providers';
+import '@mantine/core/styles.css';
 import '@/styles/globals.css';
 
 const inter = Inter({
