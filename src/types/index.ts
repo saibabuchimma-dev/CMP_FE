@@ -95,6 +95,8 @@ export interface DailyLog {
   createdAt: string;
 }
 
+export type PhotoCategory = 'Issue' | 'Daily Log' | 'Progress' | 'QA/QC' | 'General';
+
 export interface Photo {
   id: string;
   url: string;
@@ -102,7 +104,7 @@ export interface Photo {
   title: string;
   location: string;
   date: string;
-  category: 'Issue' | 'Daily Log' | 'Progress' | 'General';
+  category: PhotoCategory;
   relatedIssueId?: string;
   relatedDailyLogId?: string;
   tags: string[];

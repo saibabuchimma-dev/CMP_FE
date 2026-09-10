@@ -6,14 +6,14 @@ import { PROJECT_STAGES, STAGE_COLORS } from '@/constants';
 
 interface ProjectStageIndicatorProps {
   stage: (typeof PROJECT_STAGES)[number];
-  percentComplete: number;
+  percentComplete?: number;
   vertical?: boolean;
   height?: number;
   showLabels?: boolean;
   className?: string;
 }
 
-export function ProjectStageIndicator({ stage, percentComplete, vertical = false, height = 96, showLabels = false, className }: ProjectStageIndicatorProps) {
+export function ProjectStageIndicator({ stage, percentComplete = 0, vertical = false, height = 96, showLabels = false, className }: ProjectStageIndicatorProps) {
   const stageIndex = PROJECT_STAGES.indexOf(stage);
   const filledBands = stageIndex + 1;
   const bandColors = PROJECT_STAGES.map(s => STAGE_COLORS[s]);

@@ -1,38 +1,33 @@
 'use client';
 
-import { TextInput, TextInputProps } from '@mantine/core';
-import { type ForwardRefExoticComponent, type RefAttributes } from 'react';
+import { forwardRef } from 'react';
+import { TextInput, type TextInputProps } from '@mantine/core';
+import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface InputProps extends TextInputProps {}
+export interface InputProps extends TextInputProps {}
 
-export const Input = Object.assign(
-  ((props: InputProps, ref) => (
-    <TextInput
-      ref={ref}
-      className={cn(props.className)}
-      size="sm"
-      radius="md"
-      {...props}
-    />
-  )) as ForwardRefExoticComponent<InputProps & RefAttributes<HTMLInputElement>>,
-  {
-    displayName: 'Input',
-  }
-);
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <TextInput
+    ref={ref}
+    size="sm"
+    radius="md"
+    {...props}
+    className={cn(props.className)}
+  />
+));
 
-export const SearchInput = Object.assign(
-  ((props: InputProps, ref) => (
-    <TextInput
-      ref={ref}
-      className={cn('pl-9', props.className)}
-      size="sm"
-      radius="md"
-      leftSection={<span className="text-text-muted">🔍</span>}
-      {...props}
-    />
-  )) as ForwardRefExoticComponent<InputProps & RefAttributes<HTMLInputElement>>,
-  {
-    displayName: 'SearchInput',
-  }
-);
+Input.displayName = 'Input';
+
+export const SearchInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <TextInput
+    ref={ref}
+    size="sm"
+    radius="md"
+    leftSection={<Search className="h-4 w-4 text-text-muted" />}
+    {...props}
+    className={cn(props.className)}
+  />
+));
+
+SearchInput.displayName = 'SearchInput';

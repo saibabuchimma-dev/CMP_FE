@@ -6,7 +6,7 @@ import { useAuthStore } from '@/stores/auth.store';
 import { LoginPage as LoginForm } from '@/features/auth/LoginForm';
 
 const DEMO_EMAIL = 'admin@buildbetter.com';
-const DEMO_PASSWORD = 'BuildBetter123!';
+const DEMO_PASSWORD = 'BuildBetter123';
 
 export default function LoginPage() {
   const router = useRouter();

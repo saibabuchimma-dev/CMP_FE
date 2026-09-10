@@ -221,7 +221,7 @@ const theme = createTheme({
 
 export function MantineThemeProvider({ children }: { children: ReactNode }) {
   return (
-    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+    <MantineProvider theme={theme}>
       <Notifications position="top-right" autoClose={4000} limit={3} />
       {children}
     </MantineProvider>

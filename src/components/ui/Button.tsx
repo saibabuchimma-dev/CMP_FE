@@ -1,11 +1,13 @@
 'use client';
 
-import { Button as MantineButton, ButtonProps } from '@mantine/core';
-import { type ReactNode } from 'react';
+import { Button as MantineButton, type ButtonProps } from '@mantine/core';
+import { type ReactNode, type ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-interface ButtonPropsExtended extends ButtonProps {
-  children: ReactNode;
+export interface ButtonPropsExtended
+  extends ButtonProps,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps> {
+  children?: ReactNode;
 }
 
 export function Button({ className, variant = 'filled', color = 'primary', size = 'sm', radius = 'md', ...props }: ButtonPropsExtended) {
